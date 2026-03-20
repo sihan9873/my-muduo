@@ -12,7 +12,7 @@ public:
     noncopyable(const noncopyable &) = delete;
     noncopyable &operator=(const noncopyable &) = delete;
 
-private:
+protected:
     // 派生类构造要调用基类的构造,所以还是手写一下
     noncopyable() = default;
     ~noncopyable() = default;

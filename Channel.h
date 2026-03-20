@@ -42,7 +42,7 @@ public:
     int fd() const { return fd_; }
     int events() const { return events_; }
     // poller负责监听事件,channel提供对外的接口,以便于poller设置
-    int set_revents(int revt) { revents_ = revt; }
+    void set_revents(int revt) { revents_ = revt; }
 
     // 设置fd相应的事件状态,再通过epoll执行真正的epoll_ctl()调用
     void enableReading()
@@ -81,6 +81,7 @@ public:
 
     // 当前channel所属的EventLoop
     EventLoop *ownerLoop() { return loop_; }
+    void remove();
 
 private:
     // 在前面的使能函数中调用
