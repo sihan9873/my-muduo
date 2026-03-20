@@ -99,7 +99,7 @@ private:
     const int fd_;    // Poller监听的fd对象
     int events_;      // 注册fd感兴趣的事件
     int revents_;     // Poller返回的fd具体发生的事件
-    int index_;
+    int index_;       // 表示channel在epoll中的状态
 
     // 跨线程监听对象生存状态
     // 防止手动remove Channel之后,还在使用Channel

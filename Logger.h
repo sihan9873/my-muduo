@@ -12,6 +12,7 @@ DEBUG 调试信息
 写成宏以便于用户调用
 */
 // LOG_INFO("%s %s",arg1,arg2)
+// dowhile(0),只执行一次,目的是把宏的执行逻辑打包成一个语句
 #define LOG_INFO(logmsgFormat, ...)                       \
     do                                                    \
     {                                                     \
@@ -40,6 +41,7 @@ DEBUG 调试信息
         char buf[1024] = {0};                             \
         snprintf(buf, 1024, logmsgFormat, ##__VA_ARGS__); \
         logger.log(buf);                                  \
+        exit(-1);                                         \
     } while (0)
 
 #ifdef MUDEBUG
