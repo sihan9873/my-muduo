@@ -34,8 +34,8 @@ Timestamp EpollPoller::poll(int timeoutMs, EpollPoller::ChannelList *activeChann
 {
     // 实际上应该用LOG_DEBUG
     // 因为poll是高频调用的函数,LOG_INFO会影响性能
-    LOG_INFO("func=%s => fd total count:%d\n", __FUNCTION__, channels_.size());
-
+    LOG_INFO("func=%s => fd total count:%ld\n", __FUNCTION__, channels_.size());
+    // 监听两类fd,一种是client的fd,一种是wakeupfd
     int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
     // 调用完epoll_wait立即保存errno,因为多个线程在运行EventLoop,防止丢失
     int savedErrno = errno;
