@@ -2,7 +2,7 @@
 
 namespace CurrentThread
 {
-    extern __thread int t_cacheTid;
+    __thread int t_cacheTid = 0;
 
     void cacheTid()
     {
