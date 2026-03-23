@@ -22,6 +22,7 @@ public:
     {
         return &addr_;
     }
+    void setSockAddr(const sockaddr_in &addr) { addr_ = addr; }
 
 private:
     // c++中可以省略struct,因为这也是个类,但c不能省
